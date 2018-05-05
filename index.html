@@ -54,8 +54,8 @@
       <div class="container">
 		<div class="row">
 			<div class="col-md-12 mx-0 mx-lg-1">
-				<h1 data-bind="text: currentCat().name"></h1>
         <h2>Click on Nyan Cat. We'll count how many times</h2>
+        <h1 data-bind="text: currentCat().name"></h1>
 				<br>
         <div data-bind="text: currentCat().clickCount"></div>
         <img src="" alt="nyan cat" data-bind="click: incrementCounter, attr: {src: currentCat().imgSrc}">
