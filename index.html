@@ -13,8 +13,8 @@
     <!-- Bootstrap core CSS -->
     <link href="lib/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom fonts for this template -->
-    <link href="lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom fonts for this template
+    <link href="lib/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -31,17 +31,15 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="https://github.com/jbradford77/nyanCatClicker">Git Nyan Cat Clicker</a>
+        <a class="navbar-brand js-scroll-trigger" href="https://github.com/jbradford77/nyanCatClicker">Git Cat Clicker</a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
+          Cat Menu
           <i class="fa fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
+          <ul data-bind="foreach: catList" class="navbar-nav ml-auto">
+            <li data-bind="text: name, click: $parent.setCat" class="nav-item mx-0 mx-lg-1"></li>
             <!--<li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
             </li>-->
           </ul>
@@ -52,17 +50,22 @@
     <!-- Header -->
     <header class="masthead bg-primary text-white text-center">
       <div class="container">
-		<div class="row">
-			<div class="col-md-12 mx-0 mx-lg-1">
-        <h2>Click on Nyan Cat. We'll count how many times</h2>
-        <h1 data-bind="text: currentCat().name"></h1>
-				<br>
-        <div data-bind="text: currentCat().clickCount"></div>
-        <img src="" alt="nyan cat" data-bind="click: incrementCounter, attr: {src: currentCat().imgSrc}">
-		    <h3 data-bind="text: currentCat().title"></h3>
-			</div>
-		</div>
-      </div>
+    		<div class="row">
+    			<div data-bind="with:currentCat" class="container col-md-12">
+            <h2>Click on The Cat. We'll count how many times</h2>
+            <h1 data-bind="text: name"></h1>
+            <div data-bind="text: clickCount"></div>
+            <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}">
+    		    <h3 data-bind="text: title"></h3>
+            <!--<div>
+              <h3>Nicknames:</h3>
+              <ul data-bind="foreach: nicknames">
+                <li data-bind="text: $data"></li>
+              </ul>
+            </div>nicknames-->
+    			</div><!--col8-->
+    		</div><!--row-->
+      </div><!--container-->
     </header>
 
 
@@ -84,7 +87,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src="lib/js/jquery.min.js"></script>
-    <script src="lib/js/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="lib/js/jquery.easing.min.js"></script>
